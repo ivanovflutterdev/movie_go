@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 
 class Movie {
+  final int id;
   final String title;
   final String releaseDate;
   final String description;
   final String imageUrl;
 
   Movie({
+    required this.id,
     required this.title,
     required this.releaseDate,
     required this.description,
@@ -25,42 +27,49 @@ class MovieListWidget extends StatefulWidget {
 class _MovieListWidgetState extends State<MovieListWidget> {
   final  _movies = [
     Movie(
+      id: 1,
       title: "Avatar: Fire and Ash",
       releaseDate: "December 17, 2025",
       description: 'Despite another significant victory over the humans, Jake Sully and the rest of his family are in mourning, having lost their eldest son, Neteyam. Neytiri, overcome with grief, withdraws and distances herself from her adopted son, Spider, who is already in grave danger—his oxygen mask could fail at any moment. Meanwhile, Colonel Miles Quaritch prepares to strike again with the help of a powerful ally: he has managed to recruit the Flame and Ash clan, led by the warrior Varang, who is embittered by Eywa.',
       imageUrl: "assets/images/avatar.png",
     ),
     Movie(
+      id: 2,
       title: "Mortal Kombat 2",
       releaseDate: "December 17, 2025",
       description: 'Despite another significant victory over the humans, Jake Sully and the rest of his family are in mourning, having lost their eldest son, Neteyam. Neytiri, overcome with grief, withdraws and distances herself from her adopted son, Spider, who is already in grave danger—his oxygen mask could fail at any moment. Meanwhile, Colonel Miles Quaritch prepares to strike again with the help of a powerful ally: he has managed to recruit the Flame and Ash clan, led by the warrior Varang, who is embittered by Eywa.',
       imageUrl: "assets/images/avatar.png",
     ),
     Movie(
+      id: 3,
       title: "Back to the Future",
       releaseDate: "December 17, 2025",
       description: 'Despite another significant victory over the humans, Jake Sully and the rest of his family are in mourning, having lost their eldest son, Neteyam. Neytiri, overcome with grief, withdraws and distances herself from her adopted son, Spider, who is already in grave danger—his oxygen mask could fail at any moment. Meanwhile, Colonel Miles Quaritch prepares to strike again with the help of a powerful ally: he has managed to recruit the Flame and Ash clan, led by the warrior Varang, who is embittered by Eywa.',
       imageUrl: "assets/images/avatar.png",
     ),
     Movie(
+      id: 4,
       title: "Battle of the Five Armies",
       releaseDate: "December 17, 2025",
       description: 'Despite another significant victory over the humans, Jake Sully and the rest of his family are in mourning, having lost their eldest son, Neteyam. Neytiri, overcome with grief, withdraws and distances herself from her adopted son, Spider, who is already in grave danger—his oxygen mask could fail at any moment. Meanwhile, Colonel Miles Quaritch prepares to strike again with the help of a powerful ally: he has managed to recruit the Flame and Ash clan, led by the warrior Varang, who is embittered by Eywa.',
       imageUrl: "assets/images/avatar.png",
     ),
     Movie(
+      id: 5,
       title: "From",
       releaseDate: "December 17, 2025",
       description: 'Despite another significant victory over the humans, Jake Sully and the rest of his family are in mourning, having lost their eldest son, Neteyam. Neytiri, overcome with grief, withdraws and distances herself from her adopted son, Spider, who is already in grave danger—his oxygen mask could fail at any moment. Meanwhile, Colonel Miles Quaritch prepares to strike again with the help of a powerful ally: he has managed to recruit the Flame and Ash clan, led by the warrior Varang, who is embittered by Eywa.',
       imageUrl: "assets/images/avatar.png",
     ),
     Movie(
+      id: 6,
       title: "Fast X",
       releaseDate: "December 17, 2025",
       description: 'Despite another significant victory over the humans, Jake Sully and the rest of his family are in mourning, having lost their eldest son, Neteyam. Neytiri, overcome with grief, withdraws and distances herself from her adopted son, Spider, who is already in grave danger—his oxygen mask could fail at any moment. Meanwhile, Colonel Miles Quaritch prepares to strike again with the help of a powerful ally: he has managed to recruit the Flame and Ash clan, led by the warrior Varang, who is embittered by Eywa.',
       imageUrl: "assets/images/avatar.png",
     ),
     Movie(
+      id: 7,
       title: "Dune: Part Two",
       releaseDate: "December 17, 2025",
       description: 'Despite another significant victory over the humans, Jake Sully and the rest of his family are in mourning, having lost their eldest son, Neteyam. Neytiri, overcome with grief, withdraws and distances herself from her adopted son, Spider, who is already in grave danger—his oxygen mask could fail at any moment. Meanwhile, Colonel Miles Quaritch prepares to strike again with the help of a powerful ally: he has managed to recruit the Flame and Ash clan, led by the warrior Varang, who is embittered by Eywa.',
@@ -86,6 +95,11 @@ class _MovieListWidgetState extends State<MovieListWidget> {
     super.initState();
     _filteredMovies = _movies;
     _searchController.addListener(_searchMovies);
+  }
+
+  void _onMovieTap(int index) {
+    final id = _movies[index].id;
+    Navigator.pushNamed(context, '/main_screen/movie_details', arguments: id);
   }
 
   @override
@@ -151,7 +165,7 @@ class _MovieListWidgetState extends State<MovieListWidget> {
                   child: InkWell(
                     borderRadius: BorderRadius.circular(10),
                     onTap: () {
-                      print('11');
+                      _onMovieTap(index);
                     },
                   ),
                 ),
