@@ -8,5 +8,6 @@ class AppImages {
   static const String topHeaderSubImage = "assets/images/poster.jpg";
   static const String recommendation = "assets/images/recommendation.png";
   static const String contrebuter = "assets/images/contrebuter.png";
+  static const String actor = "assets/images/actor_placeholder.jpg";
 
 }
